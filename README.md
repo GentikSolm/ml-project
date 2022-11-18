@@ -8,7 +8,7 @@ Total records
 Response Variable
 - Return on Investment (roi)
 
-Dependant Variables
+Independent Variables
 
 | Variable | Description |
 |-------|------|
