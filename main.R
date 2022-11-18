@@ -12,9 +12,10 @@
 # For Section 1 and 2, see README.MD
 
 # Load Data
-library(tidyverse)   # install.packages(tidyverse")
+library(tidyverse) # install.packages("tidyverse")
 products <- read_csv("https://ml.brunuslabs.com")
-products <- as_tibble(concrete)
+products <- as_tibble(products)
+products
 
 #  - Show selected scatter plots of (X_i vs Y).
 #  - Give summary statistic for response variable. (Table or Histogram).
