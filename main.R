@@ -17,10 +17,62 @@ products <- read_csv("https://ml.brunuslabs.com")
 products <- as_tibble(products)
 products
 
-#  - Show selected scatter plots of (X_i vs Y).
-#  - Give summary statistic for response variable. (Table or Histogram).
-#  - Result of Chi-square association test.
+# Rename roi to resp
+products <- products %>% rename(resp=roi)
+attach(products)
+# Check NA
+Orig <- products
+print("Summary:")
+summary(Orig)
+print("Total NA")
+sum(is.na(Orig))
+Orig <- Orig %>% na.omit()
 
+# Remove outliers that could corrupt model
+Q <- quantile(Orig$resp, probs=c(.25, .75), na.rm = FALSE)
+iqr <- IQR(Orig$resp)
+up <-  Q[2]+1.5*iqr # Upper Range
+low<- Q[1]-1.5*iqr # Lower Range
+Orig<- subset(Orig, Orig$resp > (Q[1] - 1.5*iqr) & Orig$resp < (Q[2]+1.5*iqr))
+
+print("Final Dimensions of data")
+dim(Orig)
+
+#  - Give summary statistic for response variable. (Table or Histogram).
+boxplot(Orig$resp)
+hist(Orig$resp)
+summary(Orig)
+
+# Split Data and use AAA to BBB chunk
+Orig <- Orig                 # Entire Data set (have to be data.frame)
+train.size <- 8500            # num of rows for training set
+test.size <- 1960             # num of rows for testing set
+my.seed <- 1234              # give a seed
+
+source('https://nmimoto.github.io/R/ML-00.txt')
+
+#  - Show selected scatter plots of (X_i vs Y).
+fold = 2
+plot(CV.train[[fold]]$fbaFees,  CV.train[[fold]]$resp, xlab="fbaFees", ylab="Response (roi)")
+lines(CV.valid[[fold]]$fbaFees, CV.valid[[fold]]$resp, type="p", col="red", pch=19)
+
+plot(CV.train[[fold]]$new,  CV.train[[fold]]$resp, xlab="new", ylab="Response (roi)")
+lines(CV.valid[[fold]]$new, CV.valid[[fold]]$resp, type="p", col="red", pch=19)
+
+plot(CV.train[[fold]]$oosamazon,  CV.train[[fold]]$resp, xlab="oosamazon", ylab="Response (roi)")
+lines(CV.valid[[fold]]$oosamazon, CV.valid[[fold]]$resp, type="p", col="red", pch=19)
+
+plot(CV.train[[fold]]$ooslistprice,  CV.train[[fold]]$resp, xlab="ooslistprice", ylab="Response (roi)")
+lines(CV.valid[[fold]]$ooslistprice, CV.valid[[fold]]$resp, type="p", col="red", pch=19)
+
+plot(CV.train[[fold]]$avgamazon,  CV.train[[fold]]$resp, xlab="avgamazon", ylab="Response (roi)")
+lines(CV.valid[[fold]]$avgamazon, CV.valid[[fold]]$resp, type="p", col="red", pch=19)
+
+plot(CV.train[[fold]]$avglistprice,  CV.train[[fold]]$resp, xlab="avglistprice", ylab="Response (roi)")
+lines(CV.valid[[fold]]$avglistprice, CV.valid[[fold]]$resp, type="p", col="red", pch=19)
+
+plot(CV.train[[fold]]$productType,  CV.train[[fold]]$resp, xlab="productType", ylab="Response (roi)")
+lines(CV.valid[[fold]]$productType, CV.valid[[fold]]$resp, type="p", col="red", pch=19)
 
 #Section 3. Base Model Fit (1-2slide)
 #  - Base model is multiple regression for a regression problem,
