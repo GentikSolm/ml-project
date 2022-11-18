@@ -74,6 +74,8 @@ lines(CV.valid[[fold]]$avglistprice, CV.valid[[fold]]$resp, type="p", col="red",
 plot(CV.train[[fold]]$productType,  CV.train[[fold]]$resp, xlab="productType", ylab="Response (roi)")
 lines(CV.valid[[fold]]$productType, CV.valid[[fold]]$resp, type="p", col="red", pch=19)
 
+#  - Result of Chi-square association test.
+
 #Section 3. Base Model Fit (1-2slide)
 #  - Base model is multiple regression for a regression problem,
 #    and Logistic regression for binary classification problem.
