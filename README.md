@@ -1,5 +1,7 @@
 # ML-Project
 
+Data hosted at [ml.brunuslabs.com](https://ml.brunuslabs.com)
+
 Total records
 - 12781
 
@@ -34,4 +36,3 @@ Values for productType
 | 4 | Invalid |
 | 5 | Variation Parent |
 
-Data hosted at ml.brunuslabs.com
