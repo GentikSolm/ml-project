@@ -1,6 +1,7 @@
 # ML-Project
 
 Final Project for Mimoto's ML Class
+By Josh Brown, Brandon Lynch, and Jacob Stys
 
 Data hosted at [ml.brunuslabs.com](https://ml.brunuslabs.com)
 
