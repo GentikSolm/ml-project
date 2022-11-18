@@ -31,3 +31,5 @@ Values for productType
 | 3 | Inaccessable |
 | 4 | Invalid |
 | 5 | Variation Parent |
+
+Data hosted at ml.brunuslabs.com
