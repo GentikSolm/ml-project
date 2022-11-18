@@ -8,6 +8,7 @@ Response Variable
 
 Dependant Variables
 
+| Variable | Description |
 |-------|------|
 | fbafees | Fees associated with reselling on amazon |
 | newprice | Current new price of product |
@@ -24,6 +25,7 @@ Dependant Variables
 
 Values for productType
 
+| Key | Value |
 |---|-------------|
 | 0 | Standard |
 | 1 | Downloadable |
