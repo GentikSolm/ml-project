@@ -11,6 +11,9 @@ def prune(var):
 
 asins = db.asin.find()
 with open("asins.csv", "w") as data:
+    line = f"roi,fbaFees,new,oosamazon,ooslistprice,avgamazon,avglistprice,newPriceIsMap,productType,avgOfferCount"
+    data.write(line)
+    data.write("\n")
     for asin_doc in asins:
         print(asin_doc['asin'])
         asin = asin_doc.get('keepa_data')
@@ -47,11 +50,13 @@ with open("asins.csv", "w") as data:
         avgused = prune(avg180[2])
         avglistprice = prune(avg180[4])
 
+        avg365 = stats['avg365']
+        avgOfferCount = prune(avg365[11])
+
         newPriceIsMap = int(asin['newPriceIsMAP'])
-        isAdultProduct = int(asin['isAdultProduct'])
         productType = asin['productType']
 
-        line = f"{roi},{fbaFees},{new},{oosamazon},{ooslistprice},{avgamazon},{avglistprice},{newPriceIsMap},{isAdultProduct},{productType}"
+        line = f"{roi},{fbaFees},{new},{oosamazon},{ooslistprice},{avgamazon},{avglistprice},{newPriceIsMap},{productType},{avgOfferCount}"
         data.write(line)
         data.write("\n")
         print(line)
