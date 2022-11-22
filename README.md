@@ -22,7 +22,10 @@ the variable relationship
 
 
 Total records
-- 12781
+- 13,283
+
+After Cleaning
+- 10,191
 
 Response Variable
 - Return on Investment (roi)
@@ -38,7 +41,7 @@ Independent Variables
 | avgamazon | 180 day average amazon price | Numeric |
 | avglistprice | 180 day average list price | Numeric |
 | newPriceIsMap | If the current price is MAP price | Boolean |
-| isAdultProduct | If the product is an adult product | Boolean |
+| avgOfferCount | 365 day average of sellers selling a product | Numeric |
 | productType | The type of the product | Categorical |
 
 

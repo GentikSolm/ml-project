@@ -53,6 +53,7 @@ source('https://nmimoto.github.io/R/ML-00.txt')
 
 #  - Show selected scatter plots of (X_i vs Y).
 fold = 2
+par(mfrow=c(3,3))
 plot(CV.train[[fold]]$fbaFees,  CV.train[[fold]]$resp, xlab="fbaFees", ylab="Response (roi)")
 lines(CV.valid[[fold]]$fbaFees, CV.valid[[fold]]$resp, type="p", col="red", pch=19)
 
@@ -73,6 +74,9 @@ lines(CV.valid[[fold]]$avglistprice, CV.valid[[fold]]$resp, type="p", col="red",
 
 plot(CV.train[[fold]]$productType,  CV.train[[fold]]$resp, xlab="productType", ylab="Response (roi)")
 lines(CV.valid[[fold]]$productType, CV.valid[[fold]]$resp, type="p", col="red", pch=19)
+
+plot(CV.train[[fold]]$avgOfferCount,  CV.train[[fold]]$resp, xlab="avgOfferCount", ylab="Response (roi)")
+lines(CV.valid[[fold]]$avgOfferCount, CV.valid[[fold]]$resp, type="p", col="red", pch=19)
 
 #  - Result of Chi-square association test.
 
