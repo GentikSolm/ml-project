@@ -45,8 +45,8 @@ summary(Orig)
 
 # Split Data and use AAA to BBB chunk
 Orig <- Orig                 # Entire Data set (have to be data.frame)
-train.size <- 8500            # num of rows for training set
-test.size <- 1960             # num of rows for testing set
+train.size <- 8000            # num of rows for training set
+test.size <- 2523             # num of rows for testing set
 my.seed <- 1234              # give a seed
 
 source('https://nmimoto.github.io/R/ML-00.txt')
@@ -89,6 +89,7 @@ lines(CV.valid[[fold]]$avgOfferCount, CV.valid[[fold]]$resp, type="p", col="red"
 #  - Did you look for better fit by omitting some variables?
 #    (if applicable)
 
+
 Reg01 <- lm(resp ~., data = Train.set)
 summary(Reg01)
 MSE.train <- mean(Reg01$residuals^2)
@@ -96,7 +97,7 @@ MSE.train <- mean(Reg01$residuals^2)
 pred <- predict(Reg01, newdata = Test.set)
 MSE.test <- mean((Test.set$resp - pred)^2)
 
-c(MSE.train, MSE.test)
+q(MSE.train, MSE.test)
 
 #Section 4. ML Model (1-2slide)
 #  - Apply ML models that you learned in this course.

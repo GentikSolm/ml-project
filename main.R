@@ -26,7 +26,8 @@ print("Summary:")
 summary(Orig)
 print("Total NA")
 sum(is.na(Orig))
-Orig <- Orig %>% na.omit()
+Orig <- Orig %>% na.omit() 
+dim(Orig)# 10059
 
 # Remove outliers that could corrupt model
 Q <- quantile(Orig$resp, probs=c(.25, .75), na.rm = FALSE)
