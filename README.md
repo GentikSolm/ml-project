@@ -25,7 +25,7 @@ Total records
 - 13,283
 
 After Cleaning
-- 10,191
+- 10,513
 
 Response Variable
 - Return on Investment (roi)
@@ -40,7 +40,6 @@ Independent Variables
 | ooslistprice | List price out of stock percentage | Numeric |
 | avgamazon | 180 day average amazon price | Numeric |
 | avglistprice | 180 day average list price | Numeric |
-| newPriceIsMap | If the current price is MAP price | Boolean |
 | avgOfferCount | 365 day average of sellers selling a product | Numeric |
 | productType | The type of the product | Categorical |
 
