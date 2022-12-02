@@ -78,7 +78,28 @@ lines(CV.valid[[fold]]$productType, CV.valid[[fold]]$resp, type="p", col="red", 
 plot(CV.train[[fold]]$avgOfferCount,  CV.train[[fold]]$resp, xlab="avgOfferCount", ylab="Response (roi)")
 lines(CV.valid[[fold]]$avgOfferCount, CV.valid[[fold]]$resp, type="p", col="red", pch=19)
 
-#  - Result of Chi-square association test.
+###- Chi-sq test of association for each column
+
+# Pick columns that has more than 1 unique value
+list_cols <- Orig %>% summarise_all(function(x) length(unique(x))) %>%
+    gather() %>% filter(value>1) %>% pull(key)
+
+# Apply chisq.test to those columns
+ChiSq.pval <- Orig %>% dplyr::select(list_cols) %>%
+    summarise_all(funs(chisq.test(., Orig$resp)$p.value))
+
+ChiSq.pval <- Orig %>% summarise_all(funs(chisq.test(., Orig$resp)$p.value))
+ChiSq.pval
+barplot(t(t(as.matrix(ChiSq.pval))), las=2, cex.names=1,
+        main="p-values from Chi-sq test of association")
+abline(h=.05, col='red')
+
+which(ChiSq.pval < .05)             # Col num of variables w <.05 p-value
+list_cols[which(ChiSq.pval < .05)]  # Top list of 'important' variables
+
+which(ChiSq.pval > .6)              # Col num of variables w >.6 p-value
+list_cols[which(ChiSq.pval > .6)]   # Top list of 'unimportatnt' variables
+
 
 #Section 3. Base Model Fit (1-2slide)
 #  - Base model is multiple regression for a regression problem,
