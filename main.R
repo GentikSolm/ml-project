@@ -280,7 +280,9 @@ RandomForest <- data.frame(
 )
 RandomForest
 
+#Section 4b. Model Improvement (Optional. 0-2 slide)
 #Boosting
+
 install.packages('gbm')
 library(gbm)
 set.seed(my.seed)
@@ -345,6 +347,8 @@ source('https://nmimoto.github.io/R/ML-00.txt')
 library(neuralnet)
 sigmoid <- function(x) 1 / (1 + exp(-x))
 
+
+# Training Neural Net models
 layout(matrix(1:6, 2, 3, byrow=TRUE))    # to plot 5 in 1 page
 CVFitDiagnosis <- numeric(0)
 for (k in 1:5) {
@@ -435,24 +439,3 @@ FinalFitDiagnosis.unsc <- data.frame(
 )
 FinalFitDiagnosis.unsc
 
-#Section 4b. Model Improvement (Optional. 0-2 slide)
-#  - Can you improve the prediction accuracy of the above model?
-#  - Tweaking of the model parameter
-#  - Variable Selection
-#  - Other methods
-#  - Are you sure you are not over-fitting the test set?
-#  - This section may be repeated if you try different models
-
-
-#Section 5. Cost Analysis and Threshold Selection (0-1 slide)
-#  (For a classification problem only)
-#  - Come up with cost function for (True Negative), (False Negative),
-#    (True Positive), (False Positive), and select best threshold based on your cost function.
-
-
-#Section 6. Conclusion (1 slide)
-#  - What do you think about your final model? Are you satisfied?
-#  - How much did it improve over the base model?
-#  - Is the model still interpretable?  or did it loose all of the interpretability?
-#  - If you are to spend more time trying to improve the prediction accuracy,
-#    what would you try next?
